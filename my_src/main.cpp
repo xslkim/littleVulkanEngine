@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <stdexcept>
+using namespace my;
 
 int main() {
   MyApp app{};

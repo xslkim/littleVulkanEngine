@@ -1,12 +1,15 @@
 #include "my_app.hpp"
 
-
-MyApp::MyApp() {
-
-}
+namespace my {
+MyApp::MyApp() {}
 
 MyApp::~MyApp() {}
 
-void MyApp::run() 
-{
+
+
+void MyApp::run() {
+  while (!myWindow.shouleClose()) {
+    glfwPollEvents();
+  }
 }
+}  // namespace my

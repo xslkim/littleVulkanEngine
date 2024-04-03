@@ -34,7 +34,7 @@ else()
 	message(STATUS "Using vulkan lib at: ${Vulkan_LIBRARIES}")
 endif()
 
-set(GLFW_PATH "D:/study/littleVulkanEngine/glfw-3.4")  # 定义一个名为VAR_NAME的变量，赋值为"value"
+set(GLFW_PATH "D:/littleVulkanEngine/glfw-3.4")  # 定义一个名为VAR_NAME的变量，赋值为"value"
 
 # 2. Set GLFW_PATH in .env.cmake to target specific glfw
 if (DEFINED GLFW_PATH)
@@ -69,11 +69,12 @@ file(GLOB_RECURSE SOURCES ${PROJECT_SOURCE_DIR}/src/*.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
-
+set(MY_PROJECT_NAME "MyVulkan")
 file(GLOB_RECURSE MY_SOURCES ${PROJECT_SOURCE_DIR}/my_src/*.cpp)
-add_executable("MyVulkan"  ${MY_SOURCES})
+add_executable(${MY_PROJECT_NAME}  ${MY_SOURCES})
 
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
+target_compile_features(${MY_PROJECT_NAME} PUBLIC cxx_std_17)
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/build")
 
@@ -103,6 +104,22 @@ if (WIN32)
   )
 
   target_link_libraries(${PROJECT_NAME} glfw3 vulkan-1)
+  
+  target_include_directories(${MY_PROJECT_NAME} PUBLIC
+    ${PROJECT_SOURCE_DIR}/my_src
+    ${Vulkan_INCLUDE_DIRS}
+    ${TINYOBJ_PATH}
+    ${GLFW_INCLUDE_DIRS}
+    ${GLM_PATH}
+    )
+
+  target_link_directories(${MY_PROJECT_NAME} PUBLIC
+    ${Vulkan_LIBRARIES}
+    ${GLFW_LIB}
+  )
+
+  target_link_libraries(${MY_PROJECT_NAME} glfw3 vulkan-1)
+  
 elseif (UNIX)
     message(STATUS "CREATING BUILD FOR UNIX")
     target_include_directories(${PROJECT_NAME} PUBLIC
