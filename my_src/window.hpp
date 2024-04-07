@@ -10,6 +10,7 @@ class Window {
   Window(int w, int h, std::string name);
   ~Window();
   bool shouleClose();
+  void createWindowSurface(VkInstance instance, VkSurfaceKHR* surface);
 
  private:
   void initWindow();

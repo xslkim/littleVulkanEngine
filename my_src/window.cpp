@@ -20,6 +20,10 @@ void Window::initWindow() {
 
 bool Window::shouleClose() { return glfwWindowShouldClose(window); }
 
+void Window::createWindowSurface(VkInstance instance, VkSurfaceKHR* surface) {
+
+  }
+
 
 
 }  // namespace my

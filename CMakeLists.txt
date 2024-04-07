@@ -145,11 +145,13 @@ find_program(GLSL_VALIDATOR glslangValidator HINTS
   $ENV{VULKAN_SDK}/Bin32/
 )
 
+
 # get all .vert and .frag files in shaders directory
 file(GLOB_RECURSE GLSL_SOURCE_FILES
   "${PROJECT_SOURCE_DIR}/shaders/*.frag"
   "${PROJECT_SOURCE_DIR}/shaders/*.vert"
 )
+
 
 foreach(GLSL ${GLSL_SOURCE_FILES})
   get_filename_component(FILE_NAME ${GLSL} NAME)
@@ -160,6 +162,8 @@ foreach(GLSL ${GLSL_SOURCE_FILES})
     DEPENDS ${GLSL})
   list(APPEND SPIRV_BINARY_FILES ${SPIRV})
 endforeach(GLSL)
+
+message(STATUS 'SPIRV_BINARY_FILES:'${SPIRV_BINARY_FILES})
 
 add_custom_target(
     Shaders
