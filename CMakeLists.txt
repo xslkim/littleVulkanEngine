@@ -17,7 +17,7 @@ endif()
 
 project(${NAME} VERSION 0.23.0)
 
-set(VULKAN_SDK_PATH "C:/VulkanSDK/1.3.283.0") 
+set(VULKAN_SDK_PATH "C:/VulkanSDK/1.3.280.0") 
 
 # 1. Set VULKAN_SDK_PATH in .env.cmake to target specific vulkan version
 if (DEFINED VULKAN_SDK_PATH)
@@ -34,7 +34,7 @@ else()
 	message(STATUS "Using vulkan lib at: ${Vulkan_LIBRARIES}")
 endif()
 
-set(GLFW_PATH "E:/littleVulkanEngine/glfw-3.4")  # 定义一个名为VAR_NAME的变量，赋值为"value"
+set(GLFW_PATH "D:/littleVulkanEngine/glfw-3.4")  # 定义一个名为VAR_NAME的变量，赋值为"value"
 
 # 2. Set GLFW_PATH in .env.cmake to target specific glfw
 if (DEFINED GLFW_PATH)
