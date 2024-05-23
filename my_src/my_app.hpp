@@ -1,6 +1,7 @@
 #pragma once
 #include "window.hpp"
 #include "MyPipeline.hpp"
+#include "my_device.hpp"
 namespace my
 {
 
@@ -15,7 +16,12 @@ class MyApp {
 
  private:
   Window myWindow{WIDTH, HEIGHT, "myWindow"};
-  MyPipeline myPipline{"shaders/my_simple_shader.vert.spv", "shaders/my_simple_shader.frag.spv"};
+  MyDevice myDevice{myWindow};
+  MyPipeline myPipline{
+      myDevice,
+      "shaders/my_simple_shader.vert.spv",
+      "shaders/my_simple_shader.frag.spv",
+      MyPipeline::defaultPipelineConfigInfo(WIDTH, HEIGHT)};
 };
 }
 
